@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package customers;
+
+// The customers service definition.
+service Customers {
+    // Sends a greeting
+    rpc GetByID (IdRequest) returns (Customer) {}
+    // Sends another greeting
+    rpc List (ListRequest) returns (stream Customer) {}
+}
+
+message IdRequest {
+    uint64 Id = 1;
+}
+
+message ListRequest {
+    int64 Offset = 1;
+    int64 Limit = 2;
+}
+
+message Customer {
+    uint64 Id = 1;
+    string FirstName = 2;
+    string LastName = 3;
+}
